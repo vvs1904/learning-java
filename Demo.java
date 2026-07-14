@@ -1143,12 +1143,533 @@
 // }
 
 
-import java.util.*;
-public class Demo{
-  public static void main(String args[]){
+// import java.util.*;
+// public class Demo{
+//   public static void main(String args[]){
+//     List<Integer> nums=Arrays.asList(4,5,7,8);
+//     System.out.println(nums);
+//     int sum=0;
+//     for(int n:nums){
+//       if(n%2==0){
+//         n=n*2;
+//         sum+=n;
+//       }
+//     }
+//     System.out.println(sum);
+//     for(int i=0;i<nums.size();i++){
+//       System.out.println(nums.get(i));
+//     }
+//     for(int n:nums){
+//       System.out.println(n);
+//     }
+//     nums.forEach(n->System.out.println(n));
+
     
-  }
+//   }
+// }
+
+
+
+//For Each
+// import java.util.*;
+// import java.util.function.*;
+// public class Demo{
+//   public static void main(String args[]){
+//     List<Integer> nums=Arrays.asList(4,5,7,3,2,6);
+    // Consumer<Integer> con=new Consumer<Integer>(){
+    //   public void accept(Integer n){
+    //     System.out.println(n);
+
+    //   }
+    // };
+//     Consumer<Integer> con=(n)->
+//      System.out.println(n);
+    
+//     nums.forEach(con);
+//     //nums.forEach((n)->System.out.println(n));
+//   }
+// }
+
+
+
+
+
+
+//Stream Api
+// import java.util.*;
+// import java.util.stream.*;
+
+// public class Demo{
+//   public static void main(String args[]){
+//     List<Integer> nums=Arrays.asList(4,5,7,8,9,10);
+//     // Stream<Integer> s1=nums.stream();
+//     // s1.forEach(n->System.out.println(n));
+//     // Stream<Integer> s2=s1.filter(n->n%2==0);
+//     // Stream<Integer> s3=s2.map(n->n*2);
+//     // s3.forEach(n->System.out.println(n));
+//     // int result=s3.reduce(0,(c,e)->c+e);
+//     // System.out.println(result);
+//     nums.stream().filter(n->n%2==0).map(n->n*2).reduce(0,(c,e)->c+e);
+//   }
+// }
+
+
+
+
+
+//all the functions in detail
+// import java.util.*;
+// import java.util.function.*;
+// import java.util.stream.*;
+
+// public class Demo{
+//   public static void main(String args[]){
+//     List<Integer> nums=Arrays.asList(5,8,7,9,0);
+//     // Predicate<Integer>p=new Predicate<Integer>(){
+//     //   public boolean test(Integer n){
+//     //    return n%2==0;
+//     //   }
+
+//     // };
+//     // Predicate<Integer>  p==(n)->n%2==0;
+//     // Function<Integer,Integer> fun=new Function<Integer,Integer>(){
+//     //   public Integer apply(Integer n){
+//     //     return n*2;
+//     //   }
+
+//     // };
+
+//     Stream<Integer> sortedValues=nums.stream().filter(n->n%2==0).sorted();
+//     sortedValues.forEach(n->System.out.println(n));
+
+
+
+
+
+
+//     // int result=nums.stream().filter(n->n%2==0).map(n->n*2).reduce(0,(c,e)->c+e);
+
+//   }
+// }
+
+
+
+
+
+
+//Parallal stream
+// import java.util.*;
+// public class Demo{
+//   public static void main(String args[]){
+//     int size=10_000;
+//     List<Integer> nums=new ArrayList<>(size);
+//     Random ran=new Random();
+//     for(int i=1;i<=10_000;i++){
+//        nums.add(ran.nextInt(100));
+
+//     }
+//     // int sum=nums.stream().map(n->n*2).reduce(0,(c,e)->c+e);
+//     // System.out.println(sum);
+
+//     long startSeq=System.currentTimeMillis();
+//     int sum2=nums.stream().map(i->{
+//       try{
+//         Thread.sleep(1);
+//       }catch(Exception e){
+//       }
+//       return i*2;
+//     }).mapToInt(i->i).sum();
+//     System.out.println(sum2);
+//     long endSeq=System.currentTimeMillis();
+
+
+//     long startSeq1=System.currentTimeMillis();
+//     int sum3=nums.parallelStream().map(i->{
+//       try{
+//         Thread.sleep(1);
+//       }catch(Exception e){
+//       }
+//       return i*2;
+//     }).mapToInt(i->i).sum();
+//     long endSeq1=System.currentTimeMillis();
+//     System.out.println(endSeq-startSeq);
+//     System.out.println(endSeq1-startSeq1);
+//   }
+// }
+
+
+
+
+//Optional Class
+// import java.util.*;
+// import java.util.Optional.*;
+// public class Demo{
+//   public static void main(String agrs[]){
+//     List<String> names=Arrays.asList("Vanshika","Vansiha","Vijay","Vinita");
+//    Optional <String >name=names.stream().filter(str->str.contains("x")).findFirst();
+//    System.out.println(name.orElse("Not found"));
+
+//   }
+// }
+
+
+
+
+
+
+
+//Method reference
+// import java.util.*;
+// public class Demo{
+//     public static void main(String args[]){
+//         List<String> names=Arrays.asList("Vanshika","Vanisha","Vinita","Vijay");
+//         List<String> uNames=names.stream().map(String::toUpperCase).toList();
+//         System.out.println(uNames);
+//         uNames.forEach(System.out::println);
+//     }
+// }
+
+
+
+
+
+
+
+//Construct referece
+// import java.util.*;
+// class Student{
+//     private String name;
+//     @Override
+//     public String toString() {
+//         return "Student [name=" + name + ", age=" + age + "]";
+//     }
+//     private int age;
+
+//     public String getName() {
+//         return name;
+//     }
+//     public void setName(String name) {
+//         this.name = name;
+//     }
+//     public int getAge() {
+//         return age;
+//     }
+//     public void setAge(int age) {
+//         this.age = age;
+//     }
+//     public Student(){
+
+//     }
+//     public Student(String name){
+//         this.name=name;
+
+//     }
+
+// }
+// public class Demo{
+//     public static void main(String args[]){
+//         List<String> names=Arrays.asList("Vanshika","Vanisha","Vinita","Vijay");
+//         List<Student> students=new ArrayList<>();
+//         // for(String name:names){
+//         //     students.add(new Student(name));
+//         // }
+//         students=names.stream().map(Student::new).toList();
+//         System.out.println(students);
+//     }
+
+// }
+
+
+
+
+
+
+//IO
+// class Student{
+//     private int id;
+//     private String name;
+//     @Override
+//     public String toString() {
+//         return "Student [id=" + id + ", name=" + name + ", age=" + age + "]";
+//     }
+//     private int age;
+//     public Student(int id, String name, int age) {
+//         this.id = id;
+//         this.name = name;
+//         this.age = age;
+//     }
+
+    
+// }
+// public class Demo{
+//     public static void main(String args[]){
+//         Student s1=new Student(1,"Vanshika",22);
+//         System.out.println(s1);
+//         Student st2=new Student(2,"Vansiha",17);
+//         System.out.println(st2);
+
+//     }
+//}
+
+
+// import java.io.*;
+// public class Demo{
+//     public static void main(String args[]){
+//         String filePath="D:\\notes\\java.txt";
+//         String dirPath="D:\\notes\\dir";
+
+
+//         try{
+//         File file1=new File("D:\\notes\\java.txt");
+//         System.out.println(file1.exists());
+//         System.out.println(file1.createNewFile());
+//         System.out.println(file1.getPath());
+//         System.out.println(file1.isDirectory());
+//         System.out.println(file1.isFile());
+
+
+//         File dir=new File("D:\\notes\\dir");
+//         System.out.println(dir.exists());
+//         System.out.println(dir.mkdir());
+//         File file2=new File("D:\\notes");
+//         String str[]=file2.list();
+//         for( String name:str){
+//           System.out.println(name);
+//         }
+
+//         }
+//         catch(Exception e){
+//             System.out.println("Error!");
+//         }
+//     }
+// }
+
+
+
+
+
+//Wrtitng data into our files
+// import java.io.*;
+// public class Demo{
+//     public static void main(String args[]) throws IOException{
+//         String filepath="D:\\notes\\java.txt";
+//         FileWriter writer=null;
+
+//         try{
+//             File file1=new File(filepath);
+//             writer=new FileWriter(file1,true);
+
+//             writer.write("java");
+//             writer.write("\n");
+//             writer.write(65);// corrosponding character will be stored
+//             char ch[]={'a','b','c','d'};
+//             writer.write(ch);
+
+//         }
+//         catch(Exception e){
+//             System.out.println("Some problem");
+//         }
+//         finally{
+//             writer.close();
+//         }
+
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Reading data from a new file
+// import java.io.*;
+// public class Demo{
+//     public static void main(String args[]) throws IOException{
+//         String filepath="D:\\notes";
+//         FileReader reader=null;
+//         try{
+//             File file1=new File(filepath);
+//             reader=new FileReader(file1);
+//         //    int i= reader.read();
+          
+//         //    while(i!=-1){
+//         //      System.out.println((char)i);
+//         //      i=reader.read();
+
+//            //}
+//            char ch[]=new char[(int)file1.length()];
+//            reader.read(ch);
+//            for(char c:ch){
+//             System.out.println(c);
+//            }
+//         }
+//         catch(Exception e){
+//             System.out.println("Some problem");
+
+//         }
+//         finally{
+//             reader.close();
+
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+//Buffered Writer
+// import java.io.*;
+// public class Demo{
+//     public static void main(String []args) throws IOException{
+//         String filePath="D:\\notes\\java.txt";
+//         FileWriter writer=null;
+//         BufferedWriter br=null;
+//         try{
+//             File file1=new File(filePath);
+//             writer=new  FileWriter(file1);
+//             br=new BufferedWriter(writer);
+//             br.write("Alien");
+//             br.newLine();
+//             br.write(66);
+//             char ch[]={'j','a','v','a'};
+//             br.write(ch);
+//         }
+//         catch(Exception e){
+
+//         }
+//         finally{
+//             br.flush();
+//             br.close();
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+//Buffered Reader
+// import java.io.*;
+// public class Demo{
+//     public static void main(String args[]) throws IOException{
+//         String filepath="D:\\notes";
+//         FileReader reader=null;
+//         BufferedReader br=null;
+//         try{
+//             File file1=new File(filepath);
+//             reader=new FileReader(file1);
+//             br=new BufferedReader(reader);
+//             String str=br.readLine();
+//             while(str!=null){
+//                 System.out.println(str);
+//                 str=br.readLine();
+//             }
+
+//         }
+//         catch(Exception e){
+//             System.out.println("Error");
+//         }
+//         finally{
+//             br.close();
+//         }
+
+//     }
+// }
+
+
+
+
+
+
+//Write operation with print operator
+// import java.io.*;
+// public class Demo{
+//     public static void main(String args[]){
+//         String filepath="D:\\notes";
+//         FileWriter writer=null;
+//         PrintWriter print=null;
+//         try{
+//             File file1=new File("D:\\notes");
+//             writer=new FileWriter(file1);
+//             print=new PrintWriter(writer);
+//             print.write(65);//A
+//             print.println();
+//             print.println(65);
+//             print.println("JAVA");
+//             print.println(true);
+
+//         }
+//         catch(Exception e){
+//             System.out.println("Erroorrrr!!!");
+//         }
+//         finally{
+//             print.close();
+//         }
+
+//     }
+// }
+
+
+
+//Serialisation
+import java.io.*;
+class Student implements Serializable{
+    private int id;
+    private String name;
+   transient private int age;
+
+    public Student(int id,String name,int age){
+        super();
+        this.id=id;
+        this.name=name;
+        this.age=age;
+
+
+    }
+    public void display(){
+        System.out.println("id"+id);
+        System.out.println("name"+name);
+        System.out.println("age"+age);
+    }
 }
+public class Demo{
+    public static void main(String args[]){
+        // Student stu1=new Student(1,"Vanshika",22);
+        // stu1.display();
+         try{
+        // FileOutputStream fos=new FileOutputStream("D:\\notes\\serial.txt");
+        // BufferedOutputStream br=new BufferedOutputStream(fos);
+        // ObjectOutputStream oos=new ObjectOutputStream(br);
+        // oos.writeObject(stu1);
+        // oos.close();
+        // fos.close();
+         FileInputStream fis=new FileInputStream("D:\\notes\\serial.txt");
+         BufferedInputStream br=new BufferedInputStream(fis);
+         ObjectInputStream ois=new ObjectInputStream(br);
+         
+         Student st=(Student)ois.readObject();
+         st.display();
+         ois.close();
+
+        }
+        catch(Exception e){
+
+        }
+        finally{
+          
+        }
+    }
+}
+
 
 
 
