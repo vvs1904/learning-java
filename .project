@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>SecondWebProject</name>
+=======
+	<name>FirstWebProject</name>
+>>>>>>> 293e0492462dd605dc29b164e85f9c45a7a3de60
 	<comment></comment>
 	<projects>
 	</projects>
